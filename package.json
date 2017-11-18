@@ -10,8 +10,28 @@
         "type": "git",
         "url": "git+https://github.com/marcospss/nodejs-mysql.git"
     },
-    "keywords": [],
-    "author": "",
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "consign": "^0.1.2",
+        "express": "^4.16.2",
+        "express-validator": "^2.20.8",
+        "morgan": "^1.7.0",
+        "mysql": "^2.15.0",
+        "path": "^0.12.7",
+        "winston": "^2.4.0",
+        "jsonwebtoken": "^5.4.1"
+    },
+    "devDependencies": {
+        "chai": "^4.1.1",
+        "database-cleaner": "^1.2.0",
+        "istanbul": "^0.4.5",
+        "mocha": "^3.5.0",
+        "nyc": "^11.3.0",
+        "supertest": "^3.0.0",
+        "testdouble": "^3.2.4"
+    },
+    "keywords": ["mysql", "nodejs"],
+    "author": "marcospss",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/marcospss/nodejs-mysql/issues"
