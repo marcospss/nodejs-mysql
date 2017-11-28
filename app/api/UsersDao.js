@@ -30,15 +30,6 @@ class UsersDao {
     }
 }
 
-function closeConnection() {
-    this._connection.end(function(err) {
-        if (err) {
-            return console.log('error:' + err.message);
-        }
-        console.log('Close the database connection.');
-    });
-}
-
 module.exports = function() {
     return UsersDao;
 };
