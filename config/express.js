@@ -9,7 +9,7 @@ const logger = require('./../app/services/logger.js');
 
 const app = express();
 
-app.set('ENV', (process.env.ENV || 'test'));
+app.set('ENV', process.env.ENV);
 app.set('port', (process.env.PORT || 8080));
 app.use(morgan("common", {
     stream: {
@@ -35,6 +35,7 @@ app.use(expressValidator());
 
 consign({ cwd: 'app' })
     .include('api')
+    .then('db')
     .then('routes')
     .then('routes/auth.js')
     .then('services')
