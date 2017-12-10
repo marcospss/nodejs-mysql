@@ -10,7 +10,7 @@ CREATE TABLE `gallery` (
   `file_name` varchar(150) NOT NULL,
   `project_id` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `content_id` (`project_id`)
+  KEY `project_id` (`project_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -29,10 +29,10 @@ CREATE TABLE `projects` (
   `meta_description` varchar(200) DEFAULT NULL,
   `description` text NOT NULL,
   `folder_files` varchar(50) NOT NULL,
-  `home_featured` tinyint(1) unsigned DEFAULT '0',
-  `featured_image` varchar(100) DEFAULT NULL,
+  `highlight` tinyint(1) unsigned DEFAULT '0',
+  `cover` varchar(100) DEFAULT NULL,
   `link` varchar(150) DEFAULT NULL,
-  `order_home_featured` int(11) DEFAULT '99',
+  `order_display` int(11) DEFAULT '99',
   `status` tinyint(1) unsigned DEFAULT '0',
   `section_id` int(11) unsigned NOT NULL,
   `data_insert` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
