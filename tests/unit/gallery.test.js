@@ -62,11 +62,13 @@ describe("# - API GALLERY", () => {
 
 
     it('- Deve remover todas as imagens do conteúdo, conforme o ID passado', (done) => {
-        api.add(addMedia, (error, data) => {});
-        return api.deleteAll(addMedia.project_id, (error, data) => {
-            expect(data.affectedRows).to.be.equal(1);
-            done();
+        api.add(addMedia, (error, data) => {
+            return api.deleteAll(addMedia.project_id, (error, data) => {
+                expect(data.affectedRows).to.be.equal(1);
+                done();
+            });
         });
+
 
     });
 

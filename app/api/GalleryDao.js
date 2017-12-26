@@ -13,8 +13,8 @@ class GalleryDao {
         this._connection.query('SELECT id, file_name, project_id FROM gallery WHERE id = ?', [idImage], callback);
     }
 
-    add(idProject, callback) {
-        this._connection.query('INSERT INTO gallery SET ?', idProject, callback);
+    add(media, callback) {
+        this._connection.query('INSERT INTO gallery SET ?', media, callback);
     }
 
     deleteById(idImage, callback) {
