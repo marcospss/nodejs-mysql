@@ -26,6 +26,4 @@ class SectionsDao {
     }
 }
 
-module.exports = function() {
-    return SectionsDao;
-};
+module.exports = () => SectionsDao;

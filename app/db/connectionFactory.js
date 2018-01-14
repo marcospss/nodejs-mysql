@@ -25,6 +25,4 @@ function closeConnection() {
     });
 }
 
-module.exports = function() {
-    return connectionFactory;
-}
+module.exports = () => connectionFactory;

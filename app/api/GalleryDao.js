@@ -14,7 +14,7 @@ class GalleryDao {
     }
 
     add(media, callback) {
-        this._connection.query('INSERT INTO gallery SET ?', media, callback);
+        this._connection.query('INSERT INTO gallery (file_name, project_id) VALUES ?', [media], callback);
     }
 
     deleteById(idImage, callback) {
@@ -26,6 +26,4 @@ class GalleryDao {
     }
 }
 
-module.exports = function() {
-    return GalleryDao;
-};
+module.exports = () => GalleryDao;

@@ -2,6 +2,7 @@
 
 const express = require('express');
 const consign = require('consign');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const morgan = require('morgan');
@@ -19,23 +20,20 @@ app.use(morgan("common", {
     }
 }));
 
+app.use(express.static('public'));
+
 app.set('keySecret', 'n0d3J$');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    next();
-});
+app.use(cors());
 
 app.use(expressValidator());
 
 consign({ cwd: 'app' })
     .include('api')
     .then('db')
+    .then('helpers')
     .then('routes')
     .then('routes/auth.js')
     .then('services')

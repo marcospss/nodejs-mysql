@@ -102,6 +102,4 @@ class ProjectsDao {
 
 }
 
-module.exports = function() {
-    return ProjectsDao;
-};
+module.exports = () => ProjectsDao;

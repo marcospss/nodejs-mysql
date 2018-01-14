@@ -30,6 +30,4 @@ class UsersDao {
     }
 }
 
-module.exports = function() {
-    return UsersDao;
-};
+module.exports = () => UsersDao;
