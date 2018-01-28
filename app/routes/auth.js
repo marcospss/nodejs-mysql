@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const ENV = require('./../../config/.env');
 
 module.exports = function(app) {
     const openConnection = app.db.connectionFactory(),
@@ -15,7 +16,7 @@ module.exports = function(app) {
                 }
 
                 if (!!data.length) {
-                    const token = jwt.sign({ login: data.email }, app.get('keySecret'), {
+                    const token = jwt.sign({ login: data.email }, app.get(ENV.keySecret), {
                         expiresIn: 1800
                     });
                     res.set('x-access-token', token);
@@ -32,7 +33,7 @@ module.exports = function(app) {
         const token = req.headers['x-access-token'];
 
         if (token) {
-            jwt.verify(token, app.get('keySecret'), function(err, decoded) {
+            jwt.verify(token, app.get(ENV.keySecret), function(err, decoded) {
                 if (err) {
                     res.status(401).json('Token rejeitado');
                 } else {

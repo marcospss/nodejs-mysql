@@ -22,7 +22,6 @@ app.use(morgan("common", {
 
 app.use(express.static('public'));
 
-app.set('keySecret', 'n0d3J$');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
