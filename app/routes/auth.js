@@ -29,21 +29,21 @@ module.exports = function(app) {
         });
 
     app.use('/dashboard/*', (req, res, next) => {
+        next();
+        // const token = req.headers['x-access-token'];
 
-        const token = req.headers['x-access-token'];
+        // if (token) {
+        //     jwt.verify(token, ENV.keySecret, function(err, decoded) {
+        //         if (err) {
+        //             res.status(401).json('Token rejeitado');
+        //         } else {
+        //             req.user = decoded;
+        //             next();
+        //         }
+        //     });
 
-        if (token) {
-            jwt.verify(token, ENV.keySecret, function(err, decoded) {
-                if (err) {
-                    res.status(401).json('Token rejeitado');
-                } else {
-                    req.user = decoded;
-                    next();
-                }
-            });
-
-        } else {
-            res.status(401).json('Nenhum token enviado');
-        }
+        // } else {
+        //     res.status(401).json('Nenhum token enviado');
+        // }
     });
 }

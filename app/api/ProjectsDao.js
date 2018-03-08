@@ -30,7 +30,6 @@ class ProjectsDao {
             ON SEC.id = P.section_id
             LEFT JOIN gallery AS G
             ON G.project_id = P.id
-            WHERE P.status = '1' 
             GROUP BY P.id 
             ORDER BY P.id DESC, gallery ASC
             `, callback);
