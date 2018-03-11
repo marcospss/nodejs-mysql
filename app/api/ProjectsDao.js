@@ -38,7 +38,7 @@ class ProjectsDao {
     getHighlight(callback) {
         this._connection.query(`
         SELECT DISTINCT
-        P.id, P.slug, P.title, P.meta_description, P.description, P.cover, P.order_display
+        P.id, P.slug, P.title, P.meta_description, P.description, P.cover, P.order_display, P.folder_files
         FROM projects AS P
         WHERE highlight = '1' 
         AND status = '1'
