@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `projects`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `projects` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `slug` varchar(70) NOT NULL,
   `title` varchar(70) NOT NULL,
   `meta_keywords` varchar(255) DEFAULT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `projects` (
   PRIMARY KEY (`id`),
   KEY `category_id` (`section_id`),
   KEY `slug` (`slug`),
-  KEY `order_home_featured` (`order_home_featured`)
+  KEY `highlight` (`highlight`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -79,6 +79,6 @@ CREATE TABLE `users` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `data_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `userEmail` (`email`)
+  KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
