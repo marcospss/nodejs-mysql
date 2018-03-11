@@ -7,8 +7,12 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const morgan = require('morgan');
 const logger = require('./../app/services/logger.js');
-
 const app = express();
+
+// loads environment variables 
+if (process.env.ENV === 'dev') {
+    require('dotenv').config();
+}
 
 app.set('ENV', process.env.ENV);
 app.set('port', (process.env.PORT || 8080));

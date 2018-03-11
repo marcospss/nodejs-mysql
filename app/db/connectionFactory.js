@@ -1,18 +1,16 @@
 'use strict';
 
 const mysql = require('mysql');
-const ENV = process.env.ENV;
 let conn = null;
 
 function connectionFactory() {
     // https://github.com/mysqljs/mysql#connection-options
     return mysql.createPool({
         connectionLimit: 10,
-        host: 'localhost',
-        port: 3306,
-        user: 'root',
-        password: 'root',
-        database: (ENV === 'dev') ? 'api-portfolio-test' : 'api-portfolio'
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB_DATABASE
     });
 }
 
