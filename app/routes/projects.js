@@ -23,7 +23,7 @@ module.exports = function(app) {
 
         })
         .post(filesUpload, (req, res) => {
-            const category = req.body,
+            const project = req.body,
                 fileCover = req.files.cover,
                 filesGallery = req.files.gallery,
                 filesUpload = (fileCover && filesGallery) ? fileCover.concat(filesGallery) : undefined,
@@ -31,12 +31,12 @@ module.exports = function(app) {
 
             if (fileCover && !filesUpload) {
                 fileCover.map(field => {
-                    category.cover = field.filename;
+                    project.cover = field.filename;
                     thumbnail.create(field.destination, field.filename);
                 });
             }
 
-            projectsDao.add(category, (error, dataProject) => {
+            projectsDao.add(project, (error, dataProject) => {
                 if (error) {
                     res.status(500).json(error);
                     return;
@@ -46,15 +46,15 @@ module.exports = function(app) {
                     projectId = dataProject.insertId;
                     filesUpload.map(field => {
                         if (field.fieldname === 'cover') {
-                            category.cover = field.filename;
-                            category.id = projectId;
+                            project.cover = field.filename;
+                            project.id = projectId;
                         } else {
                             gallery.push([field.filename, projectId]);
                         }
                         thumbnail.create(field.destination, field.filename);
                     });
 
-                    projectsDao.update(category, (error, dataProjectUpdate) => {});
+                    projectsDao.update(project, (error, dataProjectUpdate) => {});
 
                     galleryDao.add(gallery, (error, dataGallery) => {
                         if (error) {
@@ -70,8 +70,8 @@ module.exports = function(app) {
 
         })
         .put((req, res) => {
-            const category = req.body;
-            projectsDao.update(category, (error, data) => {
+            const project = req.body;
+            projectsDao.update(project, (error, data) => {
                 if (error) {
                     res.status(500).json(error);
                     return;
