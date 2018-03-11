@@ -4,8 +4,7 @@
     "description": "API NodeJS com base de dados MySQL",
     "main": "index.js",
     "engines": {
-        "node": "9.4.4",
-        "npm": "5.6.0"
+        "node": "6.11.1"
     },
     "scripts": {
         "test": "cross-env ENV=dev mocha ./tests/**/*.test.js",
