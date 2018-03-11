@@ -1,5 +1,5 @@
 {
-    "name": "nodejs-mysql",
+    "name": "mps-api-nodejs-mysql",
     "version": "1.0.0",
     "description": "API NodeJS com base de dados MySQL",
     "main": "index.js",
