@@ -38,10 +38,12 @@ class ProjectsDao {
     getHighlight(callback) {
         this._connection.query(`
         SELECT DISTINCT
-        P.id, P.slug, P.title, P.meta_description, P.description, P.cover, P.order_display, P.folder_files
+        P.id, P.slug, P.title, P.meta_description, P.description, P.cover, P.order_display, P.folder_files, SEC.title AS category
         FROM projects AS P
-        WHERE highlight = '1' 
-        AND status = '1'
+        LEFT JOIN sections AS SEC 
+        ON SEC.id = P.section_id
+        WHERE P.highlight = '1' 
+        AND P.status = '1'
         ORDER BY P.order_display ASC
         LIMIT 0,16
         `, callback);
