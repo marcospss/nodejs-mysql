@@ -55,7 +55,7 @@ class ProjectsDao {
         P.id, P.slug, P.title, P.meta_keywords, P.meta_description, P.description, 
         P.folder_files, P.highlight, P.cover, P.link, 
         P.order_display, P.section_id, P.status, SEC.title AS category,
-        GROUP_CONCAT(DISTINCT CONCAT(G.id,':',G.file_name) ORDER BY G.file_name ASC  SEPARATOR ',') AS gallery
+        GROUP_CONCAT(DISTINCT CONCAT(G.file_name) ORDER BY G.file_name ASC  SEPARATOR ',') AS gallery
 
         FROM projects AS P
         LEFT JOIN sections AS SEC 

@@ -30,6 +30,19 @@ module.exports = function(app) {
 
         });
 
+    app.route('/project/:slugProject')
+        .get((req, res) => {
+            const slugProject = req.params.slugProject;
+            projects.getBySlug(slugProject, (error, data) => {
+                if (error) {
+                    res.status(500).json(error);
+                    return;
+                }
+                res.status(200).json(data);
+            });
+
+        });
+
     app.route('/projects/related/:idSection/:idProject')
         .get((req, res) => {
             const idSection = req.params.idSection,
@@ -69,16 +82,4 @@ module.exports = function(app) {
 
         });
 
-    app.route('/:slugProject')
-        .get((req, res) => {
-            const slugProject = req.params.slugProject;
-            projects.getBySlug(slugProject, (error, data) => {
-                if (error) {
-                    res.status(500).json(error);
-                    return;
-                }
-                res.status(200).json(data);
-            });
-
-        });
 };
