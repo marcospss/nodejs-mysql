@@ -81,7 +81,7 @@ module.exports = function(app) {
 
         });
 
-    app.route('/dashboard/projects/:idProject')
+    app.route('/dashboard/projects/:id')
         .get((req, res) => {
             const idProject = req.params.id;
             projectsDao.getById(idProject, (error, data) => {

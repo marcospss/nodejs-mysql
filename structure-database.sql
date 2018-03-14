@@ -6,9 +6,9 @@ DROP TABLE IF EXISTS `gallery`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gallery` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `file_name` varchar(150) NOT NULL,
-  `project_id` bigint(20) unsigned NOT NULL,
+  `project_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `project_id` (`project_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
