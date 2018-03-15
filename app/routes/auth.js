@@ -8,7 +8,6 @@ module.exports = function(app) {
         .post((req, res) => {
             const user = req.body;
             api.getByEmailAndPassword(user, (error, data) => {
-
                 if (error) {
                     res.status(500).json(error);
                     return;
@@ -19,7 +18,8 @@ module.exports = function(app) {
                         expiresIn: 1800
                     });
                     res.set('x-access-token', token);
-                    res.end();
+                    res.status(200).json({ user: data[0].name, token: token });
+                    //res.end();
                 } else {
                     res.status(401).json('Login/senha inválidos');
                 }
