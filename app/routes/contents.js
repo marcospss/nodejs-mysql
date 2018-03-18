@@ -20,7 +20,7 @@ module.exports = function(app) {
 
     app.route('/projects')
         .get((req, res) => {
-            projects.getAll((error, data) => {
+            projects.getAll(true, (error, data) => {
                 if (error) {
                     res.status(500).json(error);
                     return;
@@ -82,4 +82,29 @@ module.exports = function(app) {
 
         });
 
+    app.route('/')
+        .get((req, res) => {
+            const data = {
+                "description": "Descrição dos endpoints da API",
+                "highlight": {
+                    "description": "Retorna todos os destaques que são exibidos na home"
+                },
+                "projects": {
+                    "description": "Retorna todos os projetos ativos"
+                },
+                "project/:slugProject": {
+                    "description": "Retorna o projeto pela url slug"
+                },
+                "projects/related/:idSection/:idProject": {
+                    "description": "Retorna os projetos relacionados pela seção"
+                },
+                "section": {
+                    "description": "Retorna todas as seções"
+                },
+                "section/:slugSection": {
+                    "description": "Retorna a seção pela url slug"
+                }
+            };
+            res.status(200).json(data);
+        });
 };

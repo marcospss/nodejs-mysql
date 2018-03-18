@@ -13,7 +13,7 @@ module.exports = function(app) {
 
     app.route('/dashboard/projects')
         .get((req, res) => {
-            projectsDao.getAll((error, data) => {
+            projectsDao.getAll(false, (error, data) => {
                 if (error) {
                     res.status(500).json(error);
                     return;

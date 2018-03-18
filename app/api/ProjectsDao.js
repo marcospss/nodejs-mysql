@@ -17,7 +17,7 @@ class ProjectsDao {
         this._connection.query('DELETE FROM projects WHERE id = ?', idProject, callback);
     }
 
-    getAll(callback) {
+    getAll(status, callback) {
         this._connection.query(`
             SELECT DISTINCT 
             P.id, P.slug, P.title, P.meta_keywords, P.meta_description, P.description, 
@@ -29,7 +29,7 @@ class ProjectsDao {
             LEFT JOIN sections AS SEC 
             ON SEC.id = P.section_id
             LEFT JOIN gallery AS G
-            ON G.project_id = P.id
+            ON G.project_id = P.id ${(status) ? ' WHERE P.status = 1' : ''}
             GROUP BY P.id 
             ORDER BY P.id DESC, gallery ASC
             `, callback);
