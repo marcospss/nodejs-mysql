@@ -22,7 +22,8 @@ class ProjectsDao {
             SELECT DISTINCT 
             P.id, P.slug, P.title, P.meta_keywords, P.meta_description, P.description, 
             P.folder_files, P.highlight, P.cover, P.link, 
-            P.order_display, P.section_id, P.status, P.data_insert, SEC.title AS category,
+            P.order_display, P.section_id, P.status, P.data_insert, 
+            SEC.title AS category, SEC.slug AS categorySlug,
             GROUP_CONCAT(DISTINCT G.file_name) gallery 
 
             FROM projects AS P
@@ -38,14 +39,15 @@ class ProjectsDao {
     getHighlight(callback) {
         this._connection.query(`
         SELECT DISTINCT
-        P.id, P.slug, P.title, P.meta_description, P.description, P.cover, P.order_display, P.folder_files, SEC.title AS category
+        P.id, P.slug, P.title, P.meta_description, P.description, P.cover, P.order_display, P.folder_files, 
+        SEC.title AS category, SEC.slug AS categorySlug
         FROM projects AS P
         LEFT JOIN sections AS SEC 
         ON SEC.id = P.section_id
         WHERE P.highlight = '1' 
         AND P.status = '1'
         ORDER BY P.order_display ASC
-        LIMIT 0,16
+        LIMIT 0,6
         `, callback);
     }
 
@@ -54,7 +56,8 @@ class ProjectsDao {
         SELECT DISTINCT 
         P.id, P.slug, P.title, P.meta_keywords, P.meta_description, P.description, 
         P.folder_files, P.highlight, P.cover, P.link, 
-        P.order_display, P.section_id, P.status, SEC.title AS category,
+        P.order_display, P.section_id, P.status, 
+        SEC.title AS category, SEC.slug AS categorySlug,
         GROUP_CONCAT(DISTINCT CONCAT(G.file_name) ORDER BY G.file_name ASC  SEPARATOR ',') AS gallery
 
         FROM projects AS P

@@ -57,7 +57,7 @@ module.exports = function(app) {
 
         });
 
-    app.route('/section')
+    app.route('/sections')
         .get((req, res) => {
             sections.getAll((error, data) => {
                 if (error) {
@@ -69,7 +69,7 @@ module.exports = function(app) {
 
         });
 
-    app.route('/section/:slugSection')
+    app.route('/sections/:slugSection')
         .get((req, res) => {
             const slugSection = req.params.slugSection;
             projects.getBySection(slugSection, (error, data) => {
