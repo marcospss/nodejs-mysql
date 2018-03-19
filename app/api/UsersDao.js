@@ -13,8 +13,8 @@ class UsersDao {
         this._connection.query('SELECT id, name, email, password, status  FROM users WHERE id = ?', [idUser], callback);
     }
 
-    getByEmailAndPassword(user, callback) {
-        this._connection.query('SELECT id, name, email, password, status  FROM users WHERE email = ? and password = ?', [user.email, user.password], callback);
+    getByEmail(user, callback) {
+        this._connection.query('SELECT id, name, email, password, status  FROM users WHERE email = ?', [user.email], callback);
     }
 
     add(user, callback) {

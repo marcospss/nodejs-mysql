@@ -82,7 +82,7 @@ module.exports = function(app) {
 
         });
 
-    app.route('**')
+    app.route('/')
         .get((req, res) => {
             const data = {
                 "description": "Descrição dos endpoints da API",

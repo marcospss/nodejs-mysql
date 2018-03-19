@@ -16,6 +16,7 @@
         "url": "git+https://github.com/marcospss/nodejs-mysql.git"
     },
     "dependencies": {
+        "bcrypt": "^1.0.3",
         "body-parser": "^1.18.2",
         "consign": "^0.1.2",
         "cors": "^2.8.1",

@@ -1,5 +1,5 @@
 'use strict';
-
+const bcrypt = require('bcrypt');
 
 module.exports = function(app) {
     const openConnection = app.db.connectionFactory(),
@@ -17,7 +17,9 @@ module.exports = function(app) {
 
         })
         .post((req, res) => {
+            const salt = bcrypt.genSaltSync();
             const user = req.body;
+            user.password = bcrypt.hashSync(user.password, salt);
             api.add(user, (error, data) => {
                 if (error) {
                     res.status(500).json(error);
