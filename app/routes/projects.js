@@ -23,9 +23,10 @@ module.exports = function(app) {
 
         })
         .post(filesUpload, (req, res) => {
+
             const project = req.body,
-                fileCover = req.files.cover,
-                filesGallery = req.files.gallery,
+                fileCover = (req.files && req.files.cover) ? req.files.cover : undefined,
+                filesGallery = (req.files && req.files.gallery) ? req.files.gallery : undefined,
                 filesUpload = (fileCover && filesGallery) ? fileCover.concat(filesGallery) : undefined,
                 gallery = [];
 

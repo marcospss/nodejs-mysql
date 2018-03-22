@@ -6,6 +6,7 @@ class ProjectsDao {
     }
 
     add(project, callback) {
+        delete project.gallery;
         this._connection.query('INSERT INTO projects SET ?', project, callback);
     }
 
