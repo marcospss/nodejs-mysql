@@ -75,7 +75,7 @@ CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(40) NOT NULL,
+  `password` varchar(62) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `data_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
