@@ -103,6 +103,10 @@ module.exports = function(app) {
                 },
                 "section/:slugSection": {
                     "description": "Retorna a seção pela url slug"
+                },
+                "app-front-end": {
+                    "url": "https://mps-react-app.herokuapp.com",
+                    "git": "https://github.com/marcospss/portfolio"
                 }
             };
             res.status(200).json(data);
